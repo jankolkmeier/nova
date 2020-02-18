@@ -27,7 +27,7 @@ namespace ssi
                 sw.WriteLine("<annotation ssi-v=\"3\">");
 
                 sw.WriteLine("    <info ftype=\"" + Source.File.Type.ToString() + "\" size=\"" + this.Count + "\" />");              
-                sw.WriteLine("    <meta annotator=\"" + Meta.AnnotatorFullName + "\" role=\"" + Meta.Role + "\"/>");
+                sw.WriteLine("    <meta annotator=\"" + Meta.Annotator + "\" role=\"" + Meta.Role + "\"/>");
                 if (Scheme.Type == AnnoScheme.TYPE.CONTINUOUS)
                 {
                     sw.WriteLine("    <scheme name=\"" + this.Scheme.Name + "\" type=\"CONTINUOUS\" sr=\"" + this.Scheme.SampleRate + "\" min=\"" + this.Scheme.MinScore + "\" max=\"" + this.Scheme.MaxScore + "\" mincolor=\"" + this.Scheme.MinOrBackColor + "\" maxcolor=\"" + this.Scheme.MaxOrForeColor + "\" />");
