@@ -309,6 +309,16 @@ namespace ssi
             }
         }
 
+
+        private void signalAndAnnoGrid_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed && !Keyboard.IsKeyDown(Key.LeftShift))
+            {
+
+                signalAndAnnoGrid_Move(e.GetPosition(control.signalAndAnnoGrid).X);
+            }
+        }
+
         #endregion EVENTHANDLER
 
 

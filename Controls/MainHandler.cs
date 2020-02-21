@@ -125,6 +125,7 @@ namespace ssi
             control.signalCloseButton.Click += signalTrackCloseButton_Click;
             SignalTrackStatic.OnTrackChange += onSignalTrackChange;
             control.signalAndAnnoGrid.MouseDown += signalAndAnnoGrid_MouseDown;
+            control.signalAndAnnoGrid.MouseMove += signalAndAnnoGrid_MouseMove;
 
             // Anno
 
@@ -368,7 +369,6 @@ namespace ssi
 
             control.Drop += controlDrop;
         }
-
 
         public void showShadowBox(string message)
         {
