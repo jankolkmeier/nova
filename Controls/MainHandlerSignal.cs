@@ -265,16 +265,15 @@ namespace ssi
         #region EVENTHANDLER
 
 
-        private void signalAndAnnoGrid_Move(double mouseX)
+        private void signalAndAnnoGrid_Move(double mouseX, bool drag)
         {
-            if (AnnoTierStatic.Label != null && Mouse.DirectlyOver.GetType() != AnnoTierStatic.Label.GetType() || AnnoTierStatic.Label == null)
+            double time = Time.TimeFromPixel(mouseX);
+            Move(time);
+            if (!drag && AnnoTierStatic.Label != null && Mouse.DirectlyOver.GetType() != AnnoTierStatic.Label.GetType() || AnnoTierStatic.Label == null)
             {
                 AnnoTierStatic.UnselectLabel();
 
                 signalCursor.X = mouseX;
-                double time = Time.TimeFromPixel(mouseX);
-
-                Move(time);
 
                 if (AnnoTierStatic.Selected != null)
                 {
@@ -305,7 +304,17 @@ namespace ssi
             if (e.LeftButton == MouseButtonState.Pressed && !Keyboard.IsKeyDown(Key.LeftShift))
             {
                
-                signalAndAnnoGrid_Move(e.GetPosition(control.signalAndAnnoGrid).X);
+                signalAndAnnoGrid_Move(e.GetPosition(control.signalAndAnnoGrid).X, false);
+            }
+        }
+
+
+        private void signalAndAnnoGrid_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed && !Keyboard.IsKeyDown(Key.LeftShift))
+            {
+
+                signalAndAnnoGrid_Move(e.GetPosition(control.signalAndAnnoGrid).X, true);
             }
         }
 
